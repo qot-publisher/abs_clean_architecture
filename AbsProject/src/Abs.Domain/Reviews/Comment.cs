@@ -1,0 +1,4 @@
+﻿namespace Abs.Domain.Reviews
+{
+    public record Comment(string Value);
+}
