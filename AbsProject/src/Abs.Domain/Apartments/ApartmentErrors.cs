@@ -9,7 +9,7 @@ namespace Abs.Domain.Apartments
 {
     public static class ApartmentErrors
     {
-        public static Error NotFount => new(
+        public static Error NotFound => new(
             "Apartment.NotFound", 
             "The apartment with the specified identifier not found");
     }
