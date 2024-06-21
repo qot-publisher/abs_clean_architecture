@@ -1,5 +1,6 @@
 ﻿using Abs.Application.Abstractions.Behaviors;
 using Abs.Domain.Bookings;
+using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Abs.Application
@@ -13,10 +14,13 @@ namespace Abs.Application
                 configuration.RegisterServicesFromAssembly(typeof(DependencyInjection).Assembly);
 
                 configuration.AddOpenBehavior(typeof(LoggingBehavior<,>));
+
+                configuration.AddOpenBehavior(typeof(ValidationBehavior<,>));
             });
 
             services.AddTransient<PricingService>();
 
+            services.AddValidatorsFromAssembly(typeof(DependencyInjection).Assembly);
 
             return services;
         }
