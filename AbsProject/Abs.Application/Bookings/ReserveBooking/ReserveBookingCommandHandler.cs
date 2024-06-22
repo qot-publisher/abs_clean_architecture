@@ -72,7 +72,7 @@ namespace Abs.Application.Bookings.ReserveBooking
 
             _bookingRepository.Add(booking);
 
-            await _unitOfWork.SaveChangedAsync(cancellationToken);
+            await _unitOfWork.SaveChangesAsync(cancellationToken);
 
             return booking.Id;
         }

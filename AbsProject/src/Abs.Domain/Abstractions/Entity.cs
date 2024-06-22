@@ -37,6 +37,11 @@ namespace Abs.Domain.Abstractions
             return Id.GetHashCode();
         }
 
+        public IReadOnlyCollection<IDomainEvent> GetDomainEvents()
+        {
+            return _domainEvents;
+        }
+
         public void ClearDomainEvents()
         {
             _domainEvents.Clear();
