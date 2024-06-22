@@ -1,5 +1,6 @@
 ﻿using Abs.Application.Abstractions.Messaging;
 using Abs.Application.Abstractions.Time;
+using Abs.Application.Exceptions;
 using Abs.Domain.Abstractions;
 using Abs.Domain.Apartments;
 using Abs.Domain.Bookings;
@@ -61,20 +62,27 @@ namespace Abs.Application.Bookings.ReserveBooking
                 return Result.Failure<Guid>(BookingErrors.Overlap);
             }
 
-            // TODO: resolve race condition when reserving two overlapping booking transaction
+            // Reserving booking trigerring apartment changes that implements optimistic concurrency versioning
+            try
+            {
+                var booking = Booking.Reserve(
+                    apartment,
+                    user.Id,
+                    duration,
+                    _dateTimeProvider.UtcNow,
+                    _pricingService);
 
-            var booking = Booking.Reserve(
-                apartment, 
-                user.Id, 
-                duration,
-                _dateTimeProvider.UtcNow, 
-                _pricingService);
+                _bookingRepository.Add(booking);
 
-            _bookingRepository.Add(booking);
+                await _unitOfWork.SaveChangesAsync(cancellationToken);
 
-            await _unitOfWork.SaveChangesAsync(cancellationToken);
+                return booking.Id;
+            }
+            catch (ConcurrencyException)
+            {
+                return Result.Failure<Guid>(BookingErrors.Overlap);
+            }
 
-            return booking.Id;
         }
     }
 }
