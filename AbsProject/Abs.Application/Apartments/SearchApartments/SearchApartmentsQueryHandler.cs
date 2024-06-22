@@ -69,6 +69,7 @@ namespace Abs.Application.Apartments.SearchApartments
                         request.StartDate,
                         request.EndDate,
                         ActiveBookingStatuses
+
                     },
                     splitOn: "Country"
                 );

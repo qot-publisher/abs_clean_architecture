@@ -1,4 +1,4 @@
-﻿using Abs.Application.Abstractions.Messaging;
+using Abs.Application.Abstractions.Messaging;
 using Abs.Application.Abstractions.Time;
 using Abs.Application.Exceptions;
 using Abs.Domain.Abstractions;
@@ -82,7 +82,6 @@ namespace Abs.Application.Bookings.ReserveBooking
             {
                 return Result.Failure<Guid>(BookingErrors.Overlap);
             }
-
         }
     }
 }
