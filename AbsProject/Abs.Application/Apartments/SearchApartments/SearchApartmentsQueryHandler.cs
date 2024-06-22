@@ -8,7 +8,7 @@ namespace Abs.Application.Apartments.SearchApartments
 {
     internal sealed class SearchApartmentsQueryHandler : IQueryHandler<SearchApartmnetsQuery, IReadOnlyList<ApartmentResponse>>
     {
-        private static readonly int[] ActiveBookingstatuses =
+        private static readonly int[] ActiveBookingStatuses =
         {
             (int)BookingStatus.Reserved,
             (int)BookingStatus.Confirmed,
@@ -68,7 +68,8 @@ namespace Abs.Application.Apartments.SearchApartments
                     {
                         request.StartDate,
                         request.EndDate,
-                        ActiveBookingstatuses
+                        ActiveBookingStatuses
+
                     },
                     splitOn: "Country"
                 );

@@ -8,6 +8,6 @@ namespace Abs.Domain.Abstractions
 {
     public interface IUnitOfWork
     {
-        Task<int> SaveChangedAsync(CancellationToken cancellationToken = default);
+        Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
     }
 }
