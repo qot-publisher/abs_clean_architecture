@@ -215,10 +215,10 @@ namespace Abs.Infrastructure.Migrations
                                 .HasColumnType("text")
                                 .HasColumnName("address_state");
 
-                            b1.Property<string>("Stree")
+                            b1.Property<string>("Street")
                                 .IsRequired()
                                 .HasColumnType("text")
-                                .HasColumnName("address_stree");
+                                .HasColumnName("address_street");
 
                             b1.Property<string>("ZipCode")
                                 .IsRequired()

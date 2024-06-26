@@ -1,3 +1,4 @@
+using Abs.Api.Extensions;
 using Abs.Application;
 using Abs.Infrastructure;
 
@@ -20,6 +21,8 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+
+    app.ApplyMigrations();
 }
 
 app.UseHttpsRedirection();

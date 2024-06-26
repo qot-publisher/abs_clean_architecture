@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Abs.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240625205953_Change_Length_For_Apartment_Description")]
-    partial class Change_Length_For_Apartment_Description
+    [Migration("20240626110916_Create_Database")]
+    partial class Create_Database
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -218,10 +218,10 @@ namespace Abs.Infrastructure.Migrations
                                 .HasColumnType("text")
                                 .HasColumnName("address_state");
 
-                            b1.Property<string>("Stree")
+                            b1.Property<string>("Street")
                                 .IsRequired()
                                 .HasColumnType("text")
-                                .HasColumnName("address_stree");
+                                .HasColumnName("address_street");
 
                             b1.Property<string>("ZipCode")
                                 .IsRequired()

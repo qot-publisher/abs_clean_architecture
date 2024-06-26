@@ -13,5 +13,14 @@ namespace Abs.Api.Extensions
 
             dbContext.Database.Migrate();
         }
+
+        public static void DropDatabase(this IApplicationBuilder app)
+        {
+            using var scope = app.ApplicationServices.CreateScope();
+
+            using var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+
+            dbContext.Database.EnsureDeleted();
+        }
     }
 }
