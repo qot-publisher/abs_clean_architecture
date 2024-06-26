@@ -1,4 +1,5 @@
-﻿using Abs.Infrastructure;
+﻿using Abs.Api.Middleware;
+using Abs.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 
 namespace Abs.Api.Extensions
@@ -21,6 +22,11 @@ namespace Abs.Api.Extensions
             using var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
 
             dbContext.Database.EnsureDeleted();
+        }
+
+        public static void UseCustomExceptionHandler(this IApplicationBuilder app)
+        {
+            app.UseMiddleware<ExceptionHandlingMiddlware>();
         }
     }
 }
