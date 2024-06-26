@@ -11,5 +11,5 @@ namespace Abs.Domain.Apartments
         string State,
         string ZipCode,
         string City,
-        string Stree);
+        string Street);
 }

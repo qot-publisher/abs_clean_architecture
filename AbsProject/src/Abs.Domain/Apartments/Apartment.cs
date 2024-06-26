@@ -30,6 +30,10 @@ namespace Abs.Domain.Apartments
             Amenities = amenities;
         }
 
+        private Apartment() : base()
+        {
+        }
+
         public Name Name { get; private set; }
 
         public Description Description { get; private set; }

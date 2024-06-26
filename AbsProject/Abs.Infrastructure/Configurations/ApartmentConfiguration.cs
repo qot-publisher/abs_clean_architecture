@@ -20,7 +20,7 @@ namespace Abs.Infrastructure.Configurations
                 .HasMaxLength(200)
                 .HasConversion(name=> name.Value, value => new Name(value));
             builder.Property(apartment => apartment.Description)
-                .HasMaxLength(200 )
+                .HasMaxLength(2000)
                 .HasConversion(description => description.Value, value => new Description(value));
 
             builder.OwnsOne(apartment => apartment.Price, priceBuilder =>

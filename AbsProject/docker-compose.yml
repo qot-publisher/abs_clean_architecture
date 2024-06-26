@@ -1,0 +1,22 @@
+version: '3.4'
+
+services:
+  abs.api:
+    image: ${DOCKER_REGISTRY-}absapi
+    container_name: Abs.Api
+    build:
+      context: .
+      dockerfile: src/Abs.Api/Dockerfile
+    depends_on:
+    - abs-db
+  abs-db:
+    image: postgres:latest
+    container_name: Abs.Db
+    environment:
+    - POSTGRES_DB=bookify
+    - POSTGRES_USER=postgres
+    - POSTGRES_PASSWORD=postgres
+    volumes:
+    - ./.containers/database:/var/lib/postgresql/data
+    ports: 
+    - 5433:5432    

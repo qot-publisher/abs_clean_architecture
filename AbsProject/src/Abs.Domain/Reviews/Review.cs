@@ -28,6 +28,10 @@ namespace Abs.Domain.Reviews
             CreatedOnUtc = createdOnUtc;
         }
 
+        private Review()
+        {
+        }
+
         public Guid ApartmentId { get; }
 
         public Guid BookingId { get; }
