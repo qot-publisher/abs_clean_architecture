@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Abs.Infrastructure
 {
-    internal class ApplicationDbContext : DbContext, IUnitOfWork
+    public class ApplicationDbContext : DbContext, IUnitOfWork
     {
         private readonly IPublisher _publisher;
 
