@@ -15,6 +15,10 @@ namespace Abs.Domain.Abstractions
             Id = id;
         }
 
+        protected Entity()
+        {
+        }
+
         public Guid Id { get; init; }
 
         public bool Equals(Entity? other)
